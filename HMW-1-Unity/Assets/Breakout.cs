@@ -1,56 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerPositionSwitcher : MonoBehaviour
+public class Breakout : MonoBehaviour
 {
-    public Transform externalViewPoint;
-    public Transform roomPosition;
-
-    private bool isInExternalView = false;
+    public InputActionReference action;
+    private bool isOutside = false;
 
     void Start()
     {
-        isInExternalView = false;
-        SwitchToRoomPosition();
-    }
-
-
-    void Update()
-    {
-    if (Input.GetKeyDown(KeyCode.Tab))
+        action.action.Enable();
+        action.action.performed += (ctx) =>
         {
-            if (isInExternalView)
-            {
-                SwitchToRoomPosition();
-            }
+            if (isOutside)
+                {
+                    transform.position= new Vector3(0,0,0);
+                }
             else
-            {
-                SwitchToExternalViewPoint();
-            }
-        }
-    }
-
-
-    void SwitchToRoomPosition()
-    {
-        Debug.Log("Switching to Room Position");
-        if (roomPosition != null)
-        {
-            transform.SetPositionAndRotation(roomPosition.position, roomPosition.rotation);
-            isInExternalView = false;
-        }
-    }
-
-    void SwitchToExternalViewPoint()
-    {
-        Debug.Log("Switching to External View Point");
-        if (externalViewPoint != null)
-        {
-            transform.SetPositionAndRotation(externalViewPoint.position, externalViewPoint.rotation);
-            isInExternalView = true;
-        }
-    }
-
+                {
+                    transform.position= new Vector3(1,50,1);
+                }
+            isOutside =!isOutside;
+        };
+    }    
 }
+
+    
 
