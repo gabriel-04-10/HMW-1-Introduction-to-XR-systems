@@ -8,22 +8,20 @@ public class Breakout : MonoBehaviour
     public InputActionReference action;
     private bool isOutside = false;
 
-    void Start()
+    void Update()
     {
         action.action.Enable();
         action.action.performed += (ctx) =>
         {
             if (isOutside)
-                {
-                    transform.position= new Vector3(0,0,0);
-                }
+                {transform.position= new Vector3(0,0,0);}
             else
                 {
-                    transform.position= new Vector3(1,50,1);
+                  transform.position= new Vector3(20,0,1);
                 }
             isOutside =!isOutside;
         };
-    }    
+    }   
 }
 
     
