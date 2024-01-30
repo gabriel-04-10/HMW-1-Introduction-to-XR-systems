@@ -14,12 +14,14 @@ public class Breakout : MonoBehaviour
         action.action.performed += (ctx) =>
         {
             if (isOutside)
-                {transform.position= new Vector3(-7,1,0);}
+            {
+                transform.position = new Vector3(-7, 1, 0);
+            }
             else
-                {
-                  transform.position= new Vector3(-28,1,30);
-                }
-            isOutside =!isOutside;
+            {
+                transform.position = new Vector3(-28, 1, 30);
+            }
+            isOutside = !isOutside;
         };
-    }   
+    }
 }
