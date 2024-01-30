@@ -17,12 +17,9 @@ public class Breakout : MonoBehaviour
                 {transform.position= new Vector3(0,0,0);}
             else
                 {
-                  transform.position= new Vector3(20,0,1);
+                  transform.position= new Vector3(-28,1,30);
                 }
             isOutside =!isOutside;
         };
     }   
 }
-
-    
-
